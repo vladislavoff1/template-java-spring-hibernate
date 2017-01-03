@@ -33,4 +33,10 @@ public class UserController {
 
         return userService.getUsersList();
     }
+
+    @RequestMapping(value = "/me")
+    @ResponseBody
+    public User me() {
+        return userService.me();
+    }
 }

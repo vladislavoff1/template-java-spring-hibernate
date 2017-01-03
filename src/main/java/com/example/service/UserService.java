@@ -13,6 +13,8 @@ public interface UserService {
 
     List<User> getUsersList();
 
+    User me();
+
     User get(String uid);
 
     User create(String uid, String name);

@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.model.User;
 import com.example.model.User_;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,6 +36,13 @@ public class UserServiceImpl implements UserService {
         c.from(User.class);
 
         return em.createQuery(c).getResultList();
+    }
+
+    @Override
+    public User me() {
+        String uid = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        return get(uid);
     }
 
     @Override
