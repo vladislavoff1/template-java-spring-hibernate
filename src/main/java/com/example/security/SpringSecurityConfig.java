@@ -19,12 +19,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Order(2)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserService userService;
+    private final SecurityUserService userService;
     private final TokenAuthenticationService tokenAuthenticationService;
 
     public SpringSecurityConfig() {
         super(true);
-        this.userService = new UserService();
+        this.userService = new SecurityUserService();
         tokenAuthenticationService = new TokenAuthenticationService("tooManySecrets", userService);
     }
 
@@ -68,7 +68,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     @Override
-    public UserService userDetailsService() {
+    public SecurityUserService userDetailsService() {
         return userService;
     }
 

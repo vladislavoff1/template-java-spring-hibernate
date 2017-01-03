@@ -1,12 +1,16 @@
 package com.example.service;
 
 import com.example.model.User;
+import com.example.security.TokenAuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by vlad on 02/01/2017.
@@ -22,10 +26,16 @@ public class AuthServiceImpl implements AuthService {
     private FacebookService facebookService;
 
     @Autowired
+    private TokenAuthenticationService tokenAuthenticationService;
+
+    @Autowired
     private UserService userService;
 
     @Transactional
     public User login(String token) {
+
+        Logger.getGlobal().log(Level.WARNING, "login ");
+
         facebook4j.User fbUser = facebookService.getUser(token);
 
         // TODO: bad token exception
@@ -50,6 +60,9 @@ public class AuthServiceImpl implements AuthService {
                     avatar
             );
         }
+
+        Map<String, String> headers = tokenAuthenticationService.addAuthentication(uid);
+        user.setHeaders(headers);
 
         return user;
     }

@@ -10,9 +10,9 @@ import org.springframework.security.core.userdetails.User;
 public final class TokenHandler {
 
     private final String secret;
-    private final UserService userService;
+    private final SecurityUserService userService;
 
-    public TokenHandler(String secret, UserService userService) {
+    public TokenHandler(String secret, SecurityUserService userService) {
         this.secret = secret;
         this.userService = userService;
     }
