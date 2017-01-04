@@ -19,8 +19,8 @@ public class FacebookServiceImpl implements FacebookService {
         ConfigurationBuilder confBuilder = new ConfigurationBuilder();
 
         confBuilder.setDebugEnabled(true);
-        confBuilder.setOAuthAppId("1299230740099936");
-        confBuilder.setOAuthAppSecret("1a0733d8c9cf7cb3a654c50ba8cb181e");
+        confBuilder.setOAuthAppId("955081524625791");
+        confBuilder.setOAuthAppSecret("2b896d7634be547a659e53741cf445ee");
         confBuilder.setUseSSL(true);
         confBuilder.setJSONStoreEnabled(true);
         return confBuilder.build();
