@@ -36,7 +36,9 @@ public class AuthServiceImpl implements AuthService {
 
         Logger.getGlobal().log(Level.WARNING, "login ");
 
-        facebook4j.User fbUser = facebookService.getUser(token);
+        String extendedToken = facebookService.extendTokenExpiration(token);
+
+        facebook4j.User fbUser = facebookService.getUser(extendedToken);
 
         // TODO: bad token exception
         if (fbUser == null) {
@@ -60,6 +62,8 @@ public class AuthServiceImpl implements AuthService {
                     avatar
             );
         }
+
+        user.setFbToken(extendedToken);
 
         Map<String, String> headers = tokenAuthenticationService.addAuthentication(uid);
         user.setHeaders(headers);

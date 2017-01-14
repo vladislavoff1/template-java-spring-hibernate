@@ -1,14 +1,27 @@
 package com.example.service;
 
 import com.example.model.Match;
+import com.example.model.User;
+
+import java.util.List;
 
 /**
  * Created by vlad on 27/12/2016.
  */
 public interface MatchService {
 
-    Match createMatch(int userID, int player2ID);
+    List<Match> history();
+    Match activeMatch();
 
-    Match confirmMatch(int userID, int matchID);
+    // creator methods
+    Match create(User player2, int seconds);
+    Match cancel(int matchId);
+
+    // enemy methods
+    Match accept(int matchId);
+    Match reject(int matchId);
+
+    // common
+    Match setResult(int matchId, int result);
 
 }

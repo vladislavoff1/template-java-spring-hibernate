@@ -28,6 +28,8 @@ public class User {
     @Transient
     private Map<String, String> headers;
 
+    private String fbToken;
+
     @PrePersist
     protected void onCreate() {
         createdAt = new Date();
@@ -88,5 +90,13 @@ public class User {
 
     public void setHeaders(Map<String, String> headers) {
         this.headers = headers;
+    }
+
+    public String getFbToken() {
+        return fbToken;
+    }
+
+    public void setFbToken(String fbToken) {
+        this.fbToken = fbToken;
     }
 }

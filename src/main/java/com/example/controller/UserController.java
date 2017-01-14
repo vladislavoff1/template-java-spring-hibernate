@@ -39,4 +39,10 @@ public class UserController {
     public User me() {
         return userService.me();
     }
+
+    @RequestMapping(value = "/my_friends")
+    @ResponseBody
+    public List<User> myFriends() {
+        return userService.myFriends();
+    }
 }

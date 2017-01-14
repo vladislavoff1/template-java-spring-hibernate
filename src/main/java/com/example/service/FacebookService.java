@@ -13,6 +13,8 @@ public interface FacebookService {
 
     User getUser(String token);
 
+    String extendTokenExpiration(String token);
+
     URL getPictureURL(String token, String userId);
 
     ResponseList<Friend> getFriends(String token);

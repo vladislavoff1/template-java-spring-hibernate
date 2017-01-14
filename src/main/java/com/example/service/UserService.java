@@ -20,4 +20,6 @@ public interface UserService {
     User create(String uid, String name);
 
     User create(String uid, String name, String avatar);
+
+    List<User> myFriends();
 }

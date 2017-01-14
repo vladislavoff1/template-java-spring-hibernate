@@ -58,6 +58,20 @@ public class FacebookServiceImpl implements FacebookService {
         return null;
     }
 
+    @Override
+    public String extendTokenExpiration(String token) {
+        Facebook fb = connectFacebook(token);
+
+        try {
+            AccessToken extendedToken = fb.extendTokenExpiration(token);
+            return extendedToken.getToken();
+        } catch (FacebookException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
 
     public URL getPictureURL(String token, String userId) {
 
