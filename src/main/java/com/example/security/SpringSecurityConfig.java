@@ -43,6 +43,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("**/*.html").permitAll()
                 .antMatchers("**/*.css").permitAll()
                 .antMatchers("**/*.js").permitAll()
+                .antMatchers("/api/*/users/").permitAll()
 
                 // Allow anonymous logins
                 .antMatchers("/api/*/auth/**").permitAll()
