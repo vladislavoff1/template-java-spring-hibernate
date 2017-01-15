@@ -9,6 +9,7 @@ import java.util.Map;
  */
 
 @Entity
+@Table(name="users")
 public class User {
 
     @Id
