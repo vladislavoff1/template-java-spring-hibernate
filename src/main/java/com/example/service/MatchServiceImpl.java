@@ -57,7 +57,11 @@ public class MatchServiceImpl implements MatchService {
     @Transactional
     public Match activeMatch() {
         User user = userService.me();
+        return activeMatch(user);
+    }
 
+    @Transactional
+    public Match activeMatch(User user) {
         CriteriaBuilder builder = em.getCriteriaBuilder();
 
         CriteriaQuery<Match> criteria = builder.createQuery(Match.class);
@@ -99,6 +103,17 @@ public class MatchServiceImpl implements MatchService {
     @Transactional
     public Match create(User player2, int seconds) {
         User player1 = userService.me();
+
+        Match active1 = activeMatch(player1);
+        Match active2 = activeMatch(player2);
+
+        if (active1 != null) {
+            return active1;
+        }
+
+        if (active2 != null) {
+            return null;
+        }
 
         Match match = new Match();
 
