@@ -81,6 +81,10 @@ public class Match {
         this.seconds = seconds;
     }
 
+    public int getSeconds() {
+        return seconds;
+    }
+
     public Date getStartAt() {
         return startAt;
     }
